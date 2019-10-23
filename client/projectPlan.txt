@@ -1,0 +1,12 @@
+Off to the left, a column for a list of all projects being managed.
+After clicking on projects, a list of tickets for that project will render beside the column.
+
+Each ticket will have the date created, severity level, and option to mark as completed, 
+the name and description of the issue. The user that has issued to task.
+
+When marked as completed, the user that changed the status, the date, 
+and a message describing steps taken to resolve the issue.
+
+Will have three separate views, Open Tasks, Closed Tasks, Admin for adding users etc.
+
+Will be built using React, Node/Express, MongoDB, SCSS.
