@@ -1,4 +1,9 @@
 .wrapper {
-    height: 60px;
-    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid black;
+    h5 {
+        margin: 0 20px;
+    }
 }

@@ -1,10 +1,14 @@
 import React from "react";
-import Styles from "./View.module.scss"
+import Styles from "./View.module.scss";
+import OpenTickets from "./OpenTickets/OpenTickets";
+
 
 const View = (props) => {
 
     return (
-        "test"
+        <section className={Styles.wrapper}>
+            <OpenTickets/>
+        </section>
     );
 }
 

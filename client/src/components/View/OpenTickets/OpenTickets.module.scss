@@ -1,0 +1,9 @@
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "sc sc tl"
+    "sc sc tb";
+    grid-template-rows: 1fr 60px;
+    grid-template-columns: repeat(2, 120px) 1fr;
+}

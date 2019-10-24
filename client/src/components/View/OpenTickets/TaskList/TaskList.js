@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "./TaskList.modules.scss";
+import Styles from "./TaskList.module.scss";
 
 const TaskList = (props) => {
 
