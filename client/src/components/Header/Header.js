@@ -6,7 +6,7 @@ const Header = (props) => {
 
     return (
         <header className={Styles.wrapper}>
-            Project Manager
+            <h1>Project Manager</h1>
             <div className="spacer"></div>
             <NavBar />
         </header>
