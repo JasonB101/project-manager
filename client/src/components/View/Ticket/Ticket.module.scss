@@ -1,11 +1,11 @@
 .wrapper {
     width: 300px;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     height: fit-content;
     margin: 10px 5px;
     box-shadow: 0px 0px 5px 1px rgb(15, 15, 15);
-    background-color: rgb(219, 217, 217);
-    transition: height 0.5s ease;
+    background-color: rgb(236, 233, 233);
+    transition: all 0.5s ease;
 
     & * {
         color: black;
@@ -22,11 +22,31 @@
         font-size: 12px;
     }
 
-    div {
+    section {
         padding: 0 10px;
 
         & * {
             margin: 5px 0;
+        }
+    }
+}
+
+.expandCollapse {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2px;
+    cursor: pointer;
+
+    img {
+        height: 30px;
+    }
+
+    &:hover {
+        img {
+            transition: all 0.3s ease;
+            height: 40px;
         }
     }
 }

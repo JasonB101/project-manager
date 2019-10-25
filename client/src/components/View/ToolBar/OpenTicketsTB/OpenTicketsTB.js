@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "./OpenTicketsTB.module.scss";
-import PlusSign from "../../../../images/plus-sign.png"
+import plusSign from "../../../../images/icons/plus-sign.png"
 
 const OpenTicketsTB = (props) => {
     
@@ -9,7 +9,7 @@ const OpenTicketsTB = (props) => {
     return (
         <div className={Styles.wrapper}>
             <div className="spacer"></div>
-            <button onClick={(e) => toggleNewTicket(true)} ><img src={PlusSign}/>Add New Ticket</button>
+            <button onClick={(e) => toggleNewTicket(true)} ><img src={plusSign}/>Add New Ticket</button>
        </div>
     );
 }

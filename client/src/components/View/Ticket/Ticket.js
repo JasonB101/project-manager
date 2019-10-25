@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./Ticket.module.scss";
+import downArrow from "../../../images/icons/arrow-down.png"
+import upArrow from "../../../images/icons/arrow-up.png"
 
 const Ticket = (props) => {
     const { projectName, task, description, date, severity } = props;
+
+    const [expanded, toggleExpand] = useState(false);
 
     const severityColor = (severityLevel) => {
         switch (severityLevel) {
@@ -22,10 +26,17 @@ const Ticket = (props) => {
             <span className={Styles.date}>{date}</span>
             <h3>{projectName}</h3>
             <br></br>
-            <div>
+            <section>
                 <h4>{task}</h4>
-                <p style={{backgroundColor: severityColor(severity)}}>Severity Level {severity}</p>
-            </div>
+                <p style={{ backgroundColor: severityColor(severity) }}>Severity Level {severity}</p>
+            </section>
+            {expanded &&
+                <section>
+                    <p>{description}</p>
+                </section>}
+            <div className={Styles.expandCollapse} onClick={(e) => toggleExpand(!expanded)}>
+                <img src={expanded ? upArrow : downArrow} />
+                </div>
 
         </div>
     );
