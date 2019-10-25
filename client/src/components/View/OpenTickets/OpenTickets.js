@@ -1,15 +1,16 @@
 import React from "react";
 import Styles from "./OpenTickets.module.scss";
-import TaskList from "./TaskList/TaskList";
+import TicketList from "./TicketList/TicketList";
 import SearchCriteria from "./SearchCriteria/SearchCriteria";
 import ToolBar from "../ToolBar/ToolBar"
 
 const OpenTickets = (props) => {
+    const tickets = props;
 
     return (
         <div className={Styles.wrapper}>
             <SearchCriteria/>
-            <TaskList />
+            <TicketList {...tickets}/>
             <ToolBar />
        </div>
     );

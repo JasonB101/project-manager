@@ -1,6 +1,7 @@
 //hook is an array [state, setState]
 
 export const saveTicket = (hook, ticket) => {
+    ticket.id = Math.floor(Math.random() * 10000);
     const { openTickets, setOpenTickets } = hook;
     localStorage.setItem("openTickets", JSON.stringify([...openTickets, ticket]));
     setOpenTickets([...openTickets, ticket]);
