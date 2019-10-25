@@ -5,10 +5,10 @@ const NavBar = (props) => {
 
     return (
         <nav className={Styles.wrapper}>
-            <h5>Open Tickets</h5>
-            <h5>Sprints</h5>
+            <h4>Open Tickets</h4>
+            <h4>Sprints</h4>
             <div className="spacer"></div>
-            <h5>Admin</h5>
+            <h4>Admin</h4>
         </nav>
     );
 }

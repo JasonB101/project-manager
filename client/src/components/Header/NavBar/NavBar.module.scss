@@ -2,8 +2,20 @@
     display: flex;
     align-items: center;
     height: 40px;
-    border-bottom: 1px solid black;
-    h5 {
-        margin: 0 20px;
+    border-bottom: 2px solid rgb(104, 102, 102);
+    
+    h4 {
+        display: flex;
+        transition: all 0.2s ease-in;
+        justify-content: center;
+        white-space: nowrap;
+        width: 80px;
+        margin: 0 0 0 30px;
+        color: rgb(168, 167, 167);
+        cursor: pointer;
+
+        &:hover {
+            font-size: 18px;
+        }
     }
 }
