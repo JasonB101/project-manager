@@ -4,7 +4,7 @@ import downArrow from "../../../images/icons/arrow-down.png"
 import upArrow from "../../../images/icons/arrow-up.png"
 
 const Ticket = (props) => {
-    const { projectName, task, description, date, severity } = props;
+    const { projectName, task, description, date, severity, user } = props;
 
     const [expanded, toggleExpand] = useState(false);
 
@@ -22,7 +22,7 @@ const Ticket = (props) => {
     }
 
     return (
-        <div className={Styles.wrapper}>
+        <div className={Styles.wrapper} onClick={(e) => toggleExpand(!expanded)}>
             <span className={Styles.date}>{date}</span>
             <h3>{projectName}</h3>
             <br></br>
@@ -31,12 +31,22 @@ const Ticket = (props) => {
                 <p style={{ backgroundColor: severityColor(severity) }}>Severity Level {severity}</p>
             </section>
             {expanded &&
+
                 <section>
+                    <hr></hr>
                     <p>{description}</p>
+                    <em>Created by {user}</em>
+
+                    <div className={Styles.buttonWrapper}>
+                        <button className={Styles.add}>Add to Sprint</button>
+                        <button className={Styles.complete}>Completed</button>
+                        <button className={Styles.close}>Close Ticket</button>
+                    </div>
                 </section>}
-            <div className={Styles.expandCollapse} onClick={(e) => toggleExpand(!expanded)}>
+
+            <div className={Styles.expandCollapse}>
                 <img src={expanded ? upArrow : downArrow} />
-                </div>
+            </div>
 
         </div>
     );

@@ -14,7 +14,7 @@ const InsertTicket = (props) => {
         task: "",
         description: "",
         severity: "Medium",
-        user: "admin",
+        user: "User",
         date: new Date().toDateString()
     })
 
