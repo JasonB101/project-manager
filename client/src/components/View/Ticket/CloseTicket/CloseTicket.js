@@ -1,16 +1,22 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Styles from "./CloseTicket.module.scss";
-import { storeData } from "../../../../Store"
 
 const CloseTicket = (props) => {
 
-    const storeDataContext = useContext(storeData);
-    const {toggleCloseTicket} = storeDataContext.toggleCloseTicket;
+    const { id, deleteTicket, openTicketsHook, toggleCloseTicket } = props;
+
+    const removeTicket = () => {
+        deleteTicket(openTicketsHook, id)
+    }
 
     return (
-        <div className={Styles.wrapper}>
-
-       </div>
+        <div className={Styles.outterDiv}>
+            <div className={Styles.wrapper}>
+                <h3>Closing out ticket. Are you sure?</h3>
+                <button onClick={removeTicket}>Confirm</button>
+                <button onClick={(e) => toggleCloseTicket(false)}>cancel</button>
+            </div>
+        </div>
     );
 }
 

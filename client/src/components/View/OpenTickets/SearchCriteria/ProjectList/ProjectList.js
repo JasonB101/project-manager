@@ -5,7 +5,10 @@ const ProjectList = (props) => {
 
     return (
         <div className={Styles.wrapper}>
-            
+            <h2>Project</h2>
+            <section>
+                <label><input type="checkbox" /> theBrain</label>
+            </section>
         </div>
     );
 }

@@ -8,15 +8,10 @@
     transition: all 0.5s ease;
 
     & * {
-        color: black;
+        color: rgb(29, 29, 29);
     }
 
-    &:hover {
-        img {
-            transition: all 0.3s ease;
-            height: 40px;
-        }
-    }
+    
 
     span {
         font-size: 12px;
@@ -27,6 +22,8 @@
         width: fit-content;
         padding: 3px;
         font-size: 12px;
+        border-radius: 5px;
+
     }
 
     section {
@@ -45,6 +42,14 @@
     align-items: center;
     margin-bottom: 2px;
 
+    &:hover {
+        img {
+            transition: height 0.3s ease;
+            height: 40px;
+        }
+        cursor: pointer;
+    }
+
     img {
         height: 30px;
     }
@@ -58,7 +63,13 @@
         margin: 5px;
         padding: 6px 3px;
         flex: 1;
+        transition: all 0.3s ease-in;
+
+        &:hover {
+            font-size: 10px;
+        }
     }
+    
 
     .add {
         &:hover {

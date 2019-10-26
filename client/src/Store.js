@@ -1,14 +1,12 @@
 import React, {createContext, useState, useEffect} from "react";
-import {saveTicket, updateTicket, deleteTicket, 
-        completedTicket, getOpenTickets} from "./ControllerFunctions/ticketFunctions";
+import {saveTicket, updateTicket, 
+        deleteTicket, getOpenTickets} from "./ControllerFunctions/ticketFunctions";
 
 export const storeData = createContext({});
 
 const Store = (props) => {
 
-    
     const [showNewTicket, toggleNewTicket] = useState(false);
-    const [showCloseTicket, toggleCloseTicket] = useState(false);
     const [openTickets, setOpenTickets] = useState([]);
 
     useEffect(() => {
@@ -19,8 +17,7 @@ const Store = (props) => {
     const contextValue = {
         toggleNewTicket: {showNewTicket, toggleNewTicket},
         openTicketsHook: {openTickets, setOpenTickets},
-        openTicketsMethods: {saveTicket, updateTicket, deleteTicket, completedTicket},
-        toggleCloseTicket: {showCloseTicket, toggleCloseTicket}
+        openTicketsMethods: {saveTicket, updateTicket, deleteTicket},
     };
 
     return (

@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     height: 40px;
-    border-bottom: 2px solid rgb(104, 102, 102);
+    border-bottom: 2px solid rgb(161, 160, 160);
     
     h4 {
         display: flex;
@@ -11,11 +11,12 @@
         white-space: nowrap;
         width: 80px;
         margin: 0 0 0 30px;
-        color: rgb(168, 167, 167);
+        color: #0483d8;
         cursor: pointer;
 
         &:hover {
             font-size: 18px;
+            color: #0696f7;
         }
     }
 }
