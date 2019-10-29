@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import Styles from "./SearchCriteria.module.scss";
 import ProjectList from "./ProjectList/ProjectList"
+import Severity from "./Severity/Severity"
 import {storeData} from "../../../../Store"
 
 const SearchCriteria = (props) => {
@@ -13,6 +14,8 @@ const SearchCriteria = (props) => {
     return (
         <div className={Styles.wrapper}>
             <ProjectList projects={[...projects]}/>
+            <br></br>
+            <Severity />
        </div>
     );
 }
