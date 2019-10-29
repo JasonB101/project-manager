@@ -23,8 +23,9 @@ export const deleteTicket = (hook, id) => {
 
 }
 
-export const getOpenTickets = (hook) => {
-    const setOpenTickets = hook;
+export const getOpenTickets = () => {
     const tickets = localStorage.getItem("openTickets");
-    setOpenTickets(tickets ? JSON.parse(tickets) : [])
+
+    //This will eventually return a promise from axios
+    return tickets ? JSON.parse(tickets) : [];
 }

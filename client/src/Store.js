@@ -8,15 +8,19 @@ const Store = (props) => {
 
     const [showNewTicket, toggleNewTicket] = useState(false);
     const [openTickets, setOpenTickets] = useState([]);
+    const [ticketsToShow, changeTicketsToShow] = useState([]);
 
     useEffect(() => {
-        getOpenTickets(setOpenTickets)
+        let tickets = getOpenTickets();
+        setOpenTickets(tickets);
+        changeTicketsToShow(tickets);
 
     }, [])
 
     const contextValue = {
         toggleNewTicket: {showNewTicket, toggleNewTicket},
         openTicketsHook: {openTickets, setOpenTickets},
+        ticketsToShow: {ticketsToShow, changeTicketsToShow},
         openTicketsMethods: {saveTicket, updateTicket, deleteTicket},
     };
 
