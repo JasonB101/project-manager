@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Styles from "./CloseTicket.module.scss";
 
 const CloseTicket = (props) => {

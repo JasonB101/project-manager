@@ -7,11 +7,11 @@ import {storeData} from "../../Store"
 const View = (props) => {
 
     const storeDataContext = useContext(storeData);
-    const {ticketsToShow} = storeDataContext.ticketsToShow;
+    const {openTickets} = storeDataContext.openTicketsHook;
 
     return (
         <section className={Styles.wrapper}>
-            <OpenTickets tickets={ticketsToShow}/>
+            <OpenTickets tickets={openTickets}/>
         </section>
     );
 }

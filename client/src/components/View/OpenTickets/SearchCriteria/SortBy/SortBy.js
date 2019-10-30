@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "./SortBy.module.scss";
 
 const SortBy = (props) => {
-    const {updateCriteria} = props;
+    const { updateCriteria } = props;
 
     const handleClick = (value) => {
         updateCriteria("sortBy", value)
@@ -11,10 +11,12 @@ const SortBy = (props) => {
     return (
         <div className={Styles.wrapper}>
             <h3>Sort By</h3>
-            <span onClick={(e) => handleClick("newest")}>newest</span>
-            <span> | </span>
-            <span onClick={(e) => handleClick("oldest")}>oldest</span>
-       </div>
+            <div>
+                <span onClick={(e) => handleClick("newest")}>newest</span>
+                <span> | </span>
+                <span onClick={(e) => handleClick("oldest")}>oldest</span>
+            </div>
+        </div>
     );
 }
 

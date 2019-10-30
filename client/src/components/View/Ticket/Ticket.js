@@ -60,7 +60,7 @@ const Ticket = (props) => {
                 </section>}
 
             <div className={Styles.expandCollapse}  onClick={(e) => toggleExpand(!expanded)}>
-                <img src={expanded ? upArrow : downArrow} />
+                <img src={expanded ? upArrow : downArrow} alt="expander" />
             </div>
             {showCloseTicket && <CloseTicket {...closeTicketProps}/>}
         </div>

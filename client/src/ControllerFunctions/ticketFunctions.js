@@ -15,7 +15,7 @@ export const updateTicket = (hook, id, ticket) => {
 
 export const deleteTicket = (hook, id) => {
     const { openTickets, setOpenTickets } = hook;
-    const alteredOpenTickets = openTickets.filter(x => x.id != id);
+    const alteredOpenTickets = openTickets.filter(x => x.id !== id);
 
     localStorage.setItem("openTickets", JSON.stringify(alteredOpenTickets));
     setOpenTickets(alteredOpenTickets);

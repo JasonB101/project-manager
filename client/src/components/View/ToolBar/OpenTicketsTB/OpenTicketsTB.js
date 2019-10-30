@@ -9,7 +9,7 @@ const OpenTicketsTB = (props) => {
     return (
         <div className={Styles.wrapper}>
             <div className="spacer"></div>
-            <button onClick={(e) => toggleNewTicket(true)} ><img src={plusSign}/>Add New Ticket</button>
+            <button onClick={(e) => toggleNewTicket(true)} ><img src={plusSign} alt="plus sign"/>Add New Ticket</button>
        </div>
     );
 }

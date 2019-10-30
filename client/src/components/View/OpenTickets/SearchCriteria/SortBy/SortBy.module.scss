@@ -6,4 +6,11 @@
     span {
         cursor: pointer;
     }
+    div {
+        margin-left: 10px;
+    }
+}
+
+span:nth-child(odd){
+    color: #0483d8;
 }

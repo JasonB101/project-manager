@@ -1,25 +1,18 @@
-import React, {useState} from "react";
+import React from "react";
 import Styles from "./Severity.module.scss";
 
 const Severity = (props) => {
-    const {updateCriteria} = props;
-    const [checkBoxValues, changeTextBoxValues] = useState({
-        "High": false,
-        "Medium": false,
-        "Low": false
-    });
+    const { searchCriteria: {severity}, updateCriteria } = props;
 
-    const onCheckBoxChange = (e) => {
-        let isChecked = e.target.checked;
-        let values = {...checkBoxValues};
-        values[e.target.name] = isChecked;
-        for (let key in values) {
-            if (!values[key]) {
-                delete values[key]
-            }
+    const onCheckBoxChange = (name) => {
+        let checkedSeverity = severity;
+        if (severity.indexOf(name) !== -1) {
+            checkedSeverity = checkedSeverity.filter(x => x !== name);
+        } else {
+            checkedSeverity.push(name);
         }
-        updateCriteria("severity", Object.keys(values));
-        changeTextBoxValues({...checkBoxValues, [e.target.name]: isChecked})
+
+        updateCriteria("severity", checkedSeverity);
     }
 
 
@@ -27,12 +20,15 @@ const Severity = (props) => {
         <div className={Styles.wrapper}>
             <h3>Severity:</h3>
             <ul>
-                <li><input onChange={onCheckBoxChange} type="checkbox" name="High"/> High</li>
-                <li><input onChange={onCheckBoxChange} type="checkbox" name="Medium"/> Medium</li>
-                <li><input onChange={onCheckBoxChange} type="checkbox" name="Low"/> Low</li>
+                <li onClick={() => onCheckBoxChange("High")}><input readOnly={true} type="checkbox"
+                    checked={severity.indexOf("High") !== -1} /> High</li>
+                <li onClick={() => onCheckBoxChange("Medium")}><input readOnly={true} type="checkbox"
+                    checked={severity.indexOf("Medium") !== -1} /> Medium</li>
+                <li onClick={() => onCheckBoxChange("Low")}><input readOnly={true} type="checkbox"
+                    checked={severity.indexOf("Low") !== -1} /> Low</li>
             </ul>
             <hr></hr>
-       </div>
+        </div>
     );
 }
 
