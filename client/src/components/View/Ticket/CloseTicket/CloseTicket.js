@@ -3,10 +3,11 @@ import Styles from "./CloseTicket.module.scss";
 
 const CloseTicket = (props) => {
 
-    const { id, deleteTicket, openTicketsHook, toggleCloseTicket } = props;
+    const { _id, deleteTicket, openTicketsHook, toggleCloseTicket } = props;
 
     const removeTicket = () => {
-        deleteTicket(openTicketsHook, id)
+        deleteTicket(openTicketsHook, _id);
+        
     }
 
     return (

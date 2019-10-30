@@ -11,7 +11,7 @@ const Ticket = (props) => {
     const openTicketsHook = storeDataContext.openTicketsHook;
     const {deleteTicket, updateTicket, } = storeDataContext.openTicketsMethods;
 
-    const { projectName, task, description, date, severity, user, id } = props;
+    const { projectName, task, description, date, severity, user, _id } = props;
 
     const [expanded, toggleExpand] = useState(false);
     const [showCloseTicket, toggleCloseTicket] = useState(false);
@@ -30,7 +30,7 @@ const Ticket = (props) => {
     }
 
     const closeTicketProps = {
-        id,
+        _id,
         deleteTicket,
         openTicketsHook,
         toggleCloseTicket

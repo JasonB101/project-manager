@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect} from "react";
 import {saveTicket, updateTicket, 
-        deleteTicket, getOpenTickets} from "./ControllerFunctions/ticketFunctions";
+        deleteTicket, getAllTickets} from "./ControllerFunctions/ticketFunctions";
 
 export const storeData = createContext({});
 
@@ -10,9 +10,7 @@ const Store = (props) => {
     const [openTickets, setOpenTickets] = useState([]);
 
     useEffect(() => {
-        let tickets = getOpenTickets();
-        setOpenTickets(tickets);
-
+        getAllTickets(setOpenTickets);
     }, [])
 
     const contextValue = {

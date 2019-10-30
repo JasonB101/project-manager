@@ -4,7 +4,7 @@ import Ticket from "../../Ticket/Ticket";
 
 
 const TicketList = (props) => {
-    const tickets = props.tickets.map(x => <Ticket key={x.id} {...x}/>);
+    const tickets = props.tickets.map(x => <Ticket key={x._id} {...x}/>);
 
 
     return (
