@@ -2,7 +2,12 @@
     display: flex;
     align-items: center;
     height: 40px;
-    
+    background-color: rgb(43, 42, 42);
+    &:hover {
+        h4 {
+            color: #0696f7;
+        }
+    }
     
     
     h4 {
@@ -17,7 +22,7 @@
 
         &:hover {
             font-size: 18px;
-            color: #0696f7;
+            
         }
     }
 }
