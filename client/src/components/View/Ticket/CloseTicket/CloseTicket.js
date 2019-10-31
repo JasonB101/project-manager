@@ -3,18 +3,18 @@ import Styles from "./CloseTicket.module.scss";
 
 const CloseTicket = (props) => {
 
-    const { _id, deleteTicket, openTicketsHook, toggleCloseTicket } = props;
+    const { _id, toggleCloseTicket, animateTicketDelete } = props;
 
     const removeTicket = () => {
-        deleteTicket(openTicketsHook, _id);
-        
+        document.querySelector("#deleteTicket").style.display = "none";
+        animateTicketDelete(_id)
     }
 
     return (
-        <div className={Styles.outterDiv}>
+        <div id="deleteTicket" className={Styles.outterDiv}>
             <div className={Styles.wrapper}>
                 <h3>Closing out ticket. Are you sure?</h3>
-                <button onClick={removeTicket}>Confirm</button>
+                <button onClick={() => removeTicket()}>Confirm</button>
                 <button onClick={(e) => toggleCloseTicket(false)}>cancel</button>
             </div>
         </div>
