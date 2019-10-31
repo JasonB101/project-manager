@@ -44,9 +44,9 @@ const Ticket = (props) => {
     }
 
     useEffect(() => {
-        TweenMax.to(wrapperAnimate, .1, {
+        TweenMax.to(wrapperAnimate, .8, {
             opacity: 1,
-            ease: Power2.easeOut
+            ease: Power2.easeIn
         })
 
     })
