@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const morgan = require("morgan")
 const PORT = process.env.PORT || 3825;
 const path = require("path");
+const mongoURI = process.env.MONGOLAB_BLUE_URI || "mongodb://localhost:27017/project_manager"
 
 //setup routes and logger
 app.use(morgan("dev"));
@@ -12,9 +13,10 @@ app.use(express.json());
 app.use("/api/tickets", require("./routes/ticketsAPI"));
 
 
+
 // Connect to colection
 mongoose.set('useCreateIndex', true)
-mongoose.connect(process.env.MONGODB_URI,{
+mongoose.connect(mongoURI,{
     useNewUrlParser: true
 }, ((err) => {
     if (err) throw (err)
