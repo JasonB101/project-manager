@@ -10,6 +10,9 @@ const mongoURI = process.env.MONGOLAB_BLUE_URI || "mongodb://localhost:27017/pro
 //setup routes and logger
 app.use(morgan("dev"));
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 app.use("/api/tickets", require("./routes/ticketsAPI"));
 
 
