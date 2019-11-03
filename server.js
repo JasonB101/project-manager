@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use("/api/tickets", require("./routes/ticketsAPI"));
+app.use("/api/auth", require("./routes/authAPI"));
 
 
 
