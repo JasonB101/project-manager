@@ -2,8 +2,7 @@
     height: 100%;
     display: grid;
     grid-template-areas: 
-    "sc sc tl"
-    "tb tb tb";
-    grid-template-rows: 1fr 60px;
+    "sc sc tl";
+    grid-template-rows: 1fr;
     grid-template-columns: repeat(2, 120px) 1fr;
 }

@@ -1,2 +1,15 @@
 .wrapper {
+
+    ul {
+        max-height: 125px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            background-color: rgb(51, 49, 49);
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(83, 82, 82);
+    
+        }
+    }
 }

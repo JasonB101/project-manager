@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "./OpenTicketsTB.module.scss";
-import plusSign from "../../../../images/icons/plus-sign.png"
+import plusSign from "../../../images/icons/plus-sign.png"
 
 const OpenTicketsTB = (props) => {
     

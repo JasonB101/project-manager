@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Styles from "./ToolBar.module.scss";
 import OpenTicketsTB from "./OpenTicketsTB/OpenTicketsTB"
-import { storeData } from "../../../Store"
+import { storeData } from "../../Store"
 
 const ToolBar = (props) => {
 
