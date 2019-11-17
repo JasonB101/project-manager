@@ -35,10 +35,10 @@ userSchema.pre("save", function (next) {
     })
 })
 
-userSchema.methods.withoutSensitiveInfo = function () {
+userSchema.methods.withoutSensitiveInfo = function (withIsAdmin) {
     const user = this.toObject();
     delete user.password;
-    delete user.isAdmin;
+    if (!withIsAdmin) delete user.isAdmin;
     return user;
 }
 
@@ -53,8 +53,8 @@ userSchema.methods.checkPassword = function (passwordAttempt, callback) {
 userSchema.methods.loginUserInfo = function () {
     return {
         user: {
-            ...this.withoutSensitiveInfo(),
-            token: jwt.sign(this.withoutSensitiveInfo(), process.env.SECRET)
+            token: jwt.sign(this.withoutSensitiveInfo(true), process.env.SECRET),
+            ...this.withoutSensitiveInfo(false)
         }
     }
 }

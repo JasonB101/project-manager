@@ -29,13 +29,13 @@ export const deleteTicket = (hook, id) => {
 
             }
         })
-
-
 }
 
 export const getAllTickets = (hook) => {
+    const {token} = JSON.parse(localStorage.getItem('user'))
     const setOpenTickets = hook;
-    axios.get("/api/tickets")
+    const options = { headers: { Authorization: `Bearer ${token}` } }
+    axios.get("/api/tickets", options)
         .then(result => {
             let tickets = result.data;
             setOpenTickets(tickets);

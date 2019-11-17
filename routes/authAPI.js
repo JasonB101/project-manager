@@ -3,7 +3,7 @@ const authRouter = express.Router();
 const User = require("../models/user");
 
 authRouter.post("/newuser", (req, res, next) => {
-    let newUser = new User(req.body)
+    let newUser = new User(req.body);
     newUser.save((err, user) => {
         if (err){
             if (err.code === 11000){
@@ -12,16 +12,17 @@ authRouter.post("/newuser", (req, res, next) => {
             return res.send({ success: false, error: err });
         } 
         
-        res.send({ success: true, user: user.withoutSensitiveInfo() })
+        res.send({ success: true, user: user.withoutSensitiveInfo() });
     })
 });
 
 authRouter.post("/login", (req, res, next) => {
     const { email, password } = req.body;
+
     User.findOne({ email: email }, (err, user) => {
-        if (err) return res.status(500).send(err)
+        if (err) return res.status(500).send(err);
         if (!user) {
-            res.send({ success: false, message: "The email address and password combination, is incorrect." });
+            return res.status(401).send({ success: false, message: "The email address and password combination, is incorrect." });
         }
         user.checkPassword(password, (err, isMatch) => {
             if (err) return res.status(500).send(err);
@@ -32,6 +33,11 @@ authRouter.post("/login", (req, res, next) => {
             res.send(user.loginUserInfo())
         })
     })
+})
+
+authRouter.get("/verifyUser", (req, res, next) => {
+    const token = req.body.token;
+    //Need to understand JWT better, this is unecessarry 
 })
 
 module.exports = authRouter;

@@ -1,8 +1,10 @@
 const express = require("express")
 const ticketRouter = express.Router();
-const Ticket = require("../models/ticket")
+const Ticket = require("../models/ticket");
+const verifyUser = require("../sharedFunctions/verifyUser")
 
 ticketRouter.post("/", (req, res, next) => {
+    
     const newTicket = new Ticket(req.body)
         newTicket.save((err, ticket) => {
             if (err) return res.status(500).send({ success: false, err });
@@ -10,15 +12,22 @@ ticketRouter.post("/", (req, res, next) => {
         })
 })
 
-ticketRouter.get("/", (req, res, next) => {
+ticketRouter.get("/", async (req, res, next) => {
+    const token = req.headers.authorization;
+    const [validUser, admin] = await verifyUser(token);
 
-    Ticket.find((err, tickets) => {
-        if (err) {
-            res.status(500)
-            return next(err)
-        }
-        return res.send(tickets)
-    });
+    if (validUser){
+        Ticket.find((err, tickets) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.send(tickets)
+        });
+    } else {
+        return res.status(403).send([])
+    }
+   
 })
 
 ticketRouter.delete("/:id", (req, res, next) => {
