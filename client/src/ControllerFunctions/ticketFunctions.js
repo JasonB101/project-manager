@@ -29,7 +29,7 @@ export const deleteTicket = (hook, id) => {
                 setOpenTickets(alteredOpenTickets);
             }
         })
-        .catch(err => console.log(err.response.message));
+        .catch(err => console.log(err.response.data.message));
 }
 
 export const getAllTickets = (hook) => {
