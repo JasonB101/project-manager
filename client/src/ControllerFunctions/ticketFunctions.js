@@ -22,15 +22,14 @@ export const deleteTicket = (hook, id) => {
     const { openTickets, setOpenTickets } = hook;
     const options = { headers: { ...tokenHeader() } }
 
-        axios.delete(`/api/tickets/${id}`, options)
-            .then(result => {
-                if (result.data.success === true) {
-                    const alteredOpenTickets = openTickets.filter(x => x._id !== id);
-                    setOpenTickets(alteredOpenTickets);
-                }
-            })
-   
-
+    axios.delete(`/api/tickets/${id}`, options)
+        .then(result => {
+            if (result.data.success === true) {
+                const alteredOpenTickets = openTickets.filter(x => x._id !== id);
+                setOpenTickets(alteredOpenTickets);
+            }
+        })
+        .catch(err => console.log(err.response.message));
 }
 
 export const getAllTickets = (hook) => {
