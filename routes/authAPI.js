@@ -27,7 +27,7 @@ authRouter.post("/login", (req, res, next) => {
         user.checkPassword(password, (err, isMatch) => {
             if (err) return res.status(500).send(err);
             if (!isMatch) {
-                return res.send({success: false, message: "The email address and password combination, is incorrect." })
+                return res.status(401).send({success: false, message: "The email address and password combination, is incorrect." })
             }
 
             res.send(user.loginUserInfo())
@@ -35,9 +35,6 @@ authRouter.post("/login", (req, res, next) => {
     })
 })
 
-authRouter.get("/verifyUser", (req, res, next) => {
-    const token = req.body.token;
-    //Need to understand JWT better, this is unecessarry 
-})
+
 
 module.exports = authRouter;

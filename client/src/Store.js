@@ -1,7 +1,9 @@
-import React, {createContext, useState, useEffect} from "react";
-import {saveTicket, updateTicket, 
-        deleteTicket, getAllTickets} from "./ControllerFunctions/ticketFunctions";
-import {login} from "./ControllerFunctions/authFunctions"
+import React, { createContext, useState, useEffect } from "react";
+import {
+    saveTicket, updateTicket,
+    deleteTicket, getAllTickets
+} from "./ControllerFunctions/ticketFunctions";
+import { login } from "./ControllerFunctions/authFunctions"
 
 export const storeData = createContext({});
 
@@ -16,21 +18,21 @@ const Store = (props) => {
 
     useEffect(() => {
         (async () => {
-            //need to create a function that handles login elsewhere
-            const user = await login({email: "jason.brown91@outlook.com", password: "Wtf10101"});
-            
-            localStorage.setItem("user", JSON.stringify(user.data.user));
-            const {token} = JSON.parse(localStorage.getItem('user'))
-            if (token){
+            //need to create a function that handles login elsewhere, this is for testing purpose only.
+            const user = await login({ email: "test@test.com", password: "test" })
+                .catch(err => console.log(err.response.data.message));
+
+            if (user) {
+                localStorage.setItem("user", JSON.stringify(user.data.user));
                 getAllTickets(setOpenTickets);
             }
-        })()
+        })();
     }, [])
 
     const contextValue = {
-        toggleNewTicket: {showNewTicket, toggleNewTicket},
-        openTicketsHook: {openTickets, setOpenTickets},
-        openTicketsMethods: {saveTicket, updateTicket, deleteTicket}
+        toggleNewTicket: { showNewTicket, toggleNewTicket },
+        openTicketsHook: { openTickets, setOpenTickets },
+        openTicketsMethods: { saveTicket, updateTicket, deleteTicket }
     };
 
     return (
