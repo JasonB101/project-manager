@@ -4,7 +4,7 @@ import axios from "axios";
 export const saveTicket = (hook, ticket) => {
     const { openTickets, setOpenTickets } = hook;
     const options = { headers: { ...tokenHeader() } }
-    
+
     axios.post("/api/tickets", ticket, options)
         .then(results => {
             let ticket = results.data.ticket;
@@ -25,11 +25,11 @@ export const deleteTicket = (hook, id) => {
         axios.delete(`/api/tickets/${id}`, options)
             .then(result => {
                 if (result.data.success === true) {
-
+                    const alteredOpenTickets = openTickets.filter(x => x._id !== id);
+                    setOpenTickets(alteredOpenTickets);
                 }
             })
-    const alteredOpenTickets = openTickets.filter(x => x._id !== id);
-    setOpenTickets(alteredOpenTickets);
+   
 
 }
 
