@@ -16,17 +16,18 @@ const Store = (props) => {
         token: localStorage.getItem('token') || ""
     })
 
-    useEffect(() => {
-        (async () => {
-            const successfulLogin = await login({ email: "test@test.com", password: "test" });
-            if (successfulLogin) getAllTickets(setOpenTickets);
-        })();
-    }, [])
+    // useEffect(() => {
+    //     (async () => {
+    //         const successfulLogin = await login({ email: "test@test.com", password: "test" });
+    //         if (successfulLogin) getAllTickets(setOpenTickets);
+    //     })();
+    // }, [])
 
     const contextValue = {
         toggleNewTicket: { showNewTicket, toggleNewTicket },
         openTicketsHook: { openTickets, setOpenTickets },
-        openTicketsMethods: { saveTicket, updateTicket, deleteTicket }
+        openTicketsMethods: { saveTicket, updateTicket, deleteTicket },
+        token: user.token
     };
 
     return (

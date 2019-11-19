@@ -5,7 +5,7 @@ const LoginBox = (props) => {
 
     return (
         <div className={Styles.wrapper}>
-
+            
        </div>
     );
 }
