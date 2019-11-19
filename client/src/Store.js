@@ -18,14 +18,8 @@ const Store = (props) => {
 
     useEffect(() => {
         (async () => {
-            //need to create a function that handles login elsewhere, this is for testing purpose only.
-            const user = await login({ email: "test@test.com", password: "test" })
-                .catch(err => console.log(err.response.data.message));
-
-            if (user) {
-                localStorage.setItem("user", JSON.stringify(user.data.user));
-                getAllTickets(setOpenTickets);
-            }
+            const successfulLogin = await login({ email: "test@test.com", password: "test" });
+            if (successfulLogin) getAllTickets(setOpenTickets);
         })();
     }, [])
 
