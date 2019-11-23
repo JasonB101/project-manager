@@ -17,6 +17,7 @@ async function verifyUser(tokenWithBearer) {
         }
     })
 
+    console.log(foundUser)
     return foundUser
 
 }

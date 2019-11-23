@@ -9,25 +9,18 @@ import { storeData } from "./Store"
 
 const App = (props) => {
     const storeDataContext = useContext(storeData);
-    const {showNewTicket} = storeDataContext.toggleNewTicket;
-    const {token} = storeDataContext.token;
+    const { showNewTicket } = storeDataContext.toggleNewTicket;
 
-    if (token){
-    return (
-        <div className={Styles.wrapper}>
-            <Header />
-            <View />
-            <ToolBar />
-            {showNewTicket && <InsertTicket />}
-        </div>
-    );
-} else {
-    return (
-        <div className={Styles.wrapper}>
-            <Login/>
-        </div>
-    )
-}
+    //need to set up routes, and if there is not a token, then keep redirecting to auth/login
+        return (
+            <div className={Styles.wrapper}>
+                <Header />
+                <View />
+                <ToolBar />
+                {showNewTicket && <InsertTicket />}
+            </div>
+        );
+   
 }
 
 export default App;

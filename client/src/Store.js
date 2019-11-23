@@ -3,7 +3,7 @@ import {
     saveTicket, updateTicket,
     deleteTicket, getAllTickets
 } from "./ControllerFunctions/ticketFunctions";
-import { login } from "./ControllerFunctions/authFunctions"
+
 
 export const storeData = createContext({});
 
@@ -12,22 +12,23 @@ const Store = (props) => {
     const [showNewTicket, toggleNewTicket] = useState(false);
     const [openTickets, setOpenTickets] = useState([]);
     const [user, setUser] = useState({
+        //there are no name and token in localStorage, JSON.parse user then access value
         name: localStorage.getItem('name') || "",
         token: localStorage.getItem('token') || ""
     })
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const successfulLogin = await login({ email: "test@test.com", password: "test" });
-    //         if (successfulLogin) getAllTickets(setOpenTickets);
-    //     })();
-    // }, [])
+    useEffect(() => {
+        if (user.token) {
+            getAllTickets(setOpenTickets);
+        }
+    }, [user])
 
     const contextValue = {
         toggleNewTicket: { showNewTicket, toggleNewTicket },
         openTicketsHook: { openTickets, setOpenTickets },
         openTicketsMethods: { saveTicket, updateTicket, deleteTicket },
-        token: user.token
+        token: user.token,
+        setUser: setUser
     };
 
     return (

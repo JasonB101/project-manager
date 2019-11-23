@@ -4,13 +4,13 @@
     height: 40px;
     background-color: rgb(43, 42, 42);
     &:hover {
-        h4 {
+        a {
             color: #0696f7;
         }
     }
     
     
-    h4 {
+    a {
         display: flex;
         transition: all 0.2s ease-in;
         justify-content: center;
@@ -19,6 +19,7 @@
         margin: 0 0 0 30px;
         color: #0483d8;
         font-weight: 100;
+        text-decoration: none;
         cursor: pointer;
 
         &:hover {

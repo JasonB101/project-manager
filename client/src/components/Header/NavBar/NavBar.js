@@ -1,14 +1,23 @@
-import React from "react";
-import Styles from "./NavBar.module.scss"
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Styles from "./NavBar.module.scss";
+import { storeData } from "../../../Store";
 
 const NavBar = (props) => {
 
+    const storeContext = useContext(storeData);
+    const token = storeContext.token
+
     return (
         <nav className={Styles.wrapper}>
-            <h4>Open Tickets</h4>
-            <h4>Sprints</h4>
-            <div className="spacer"></div>
-            <h4>Admin</h4>
+            {token &&
+                <>
+                    <Link to="/opentickets">Open Tickets</Link>
+                    <Link to="/sprints">Sprints</Link>
+                    <div className="spacer"></div>
+                    <Link to="/admin">Admin</Link>
+                </>}
+
         </nav>
     );
 }

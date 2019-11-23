@@ -1,5 +1,10 @@
 import axios from "axios";
 //hook is an array [state, setState]
+// savedAxios.interceptors.request.use((config) => {
+//     const token = localStorage.getItem("token");
+//     config.headers.Authorization = `Bearer ${token}`;
+//     return config;
+// })
 
 export const saveTicket = (hook, ticket) => {
     const { openTickets, setOpenTickets } = hook;
