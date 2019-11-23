@@ -24,14 +24,15 @@ const LoginBox = (props) => {
     const submit = async () => {
 
         const loginData = await login(formInputs);
-
+        
         if (loginData.success) {
             setUserInfo(loginData.data)
             props.history.push("/opentickets")
         }
         if (!loginData.success) {
             if (loginData.data){
-                setErrorMessage(login.Data);
+                console.log("Made it past the promise")
+                setErrorMessage(loginData.data);
             } else {
                 setErrorMessage("Something went wrong, try again later.")
             }
