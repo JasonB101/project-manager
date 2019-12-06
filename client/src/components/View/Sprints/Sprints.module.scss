@@ -1,0 +1,8 @@
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "mm mm sl";
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 120px) 1fr;
+}

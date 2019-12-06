@@ -21,6 +21,11 @@ const LoginBox = (props) => {
         })
     }
 
+    function errorToggle(message){
+        setErrorMessage(message);
+        setTimeout(() => setErrorMessage(""), 5000);
+    }
+
     const submit = async () => {
 
         const loginData = await login(formInputs);
@@ -32,9 +37,9 @@ const LoginBox = (props) => {
         if (!loginData.success) {
             if (loginData.data){
                 console.log("Made it past the promise")
-                setErrorMessage(loginData.data);
+                errorToggle(loginData.data);
             } else {
-                setErrorMessage("Something went wrong, try again later.")
+                errorToggle("Something went wrong, try again later.")
             }
         }
 

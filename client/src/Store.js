@@ -10,11 +10,12 @@ export const storeData = createContext({});
 const Store = (props) => {
 
     const [showNewTicket, toggleNewTicket] = useState(false);
+    const [showNewSprint, toggleNewSprint] = useState(false);
     const [openTickets, setOpenTickets] = useState([]);
     const [user, setUser] = useState({
         //there are no name and token in localStorage, JSON.parse user then access value
-        name: localStorage.getItem('name') || "",
-        token: localStorage.getItem('token') || ""
+        name: JSON.parse(localStorage.getItem('user')).fullName || "",
+        token: JSON.parse(localStorage.getItem('user')).token || ""
     })
 
     useEffect(() => {
@@ -25,6 +26,7 @@ const Store = (props) => {
 
     const contextValue = {
         toggleNewTicket: { showNewTicket, toggleNewTicket },
+        toggleNewSprint: {showNewSprint, toggleNewSprint},
         openTicketsHook: { openTickets, setOpenTickets },
         openTicketsMethods: { saveTicket, updateTicket, deleteTicket },
         token: user.token,

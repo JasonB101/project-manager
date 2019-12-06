@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    grid-area: mm;
+    padding: 40px 10px;
+    background-color: rgb(34, 33, 33);
+
+    ul {
+        margin-top: 10px;
+        list-style: none;
+        margin-bottom: 10px;
+    }
+
+    li {
+        margin: 5px;
+        cursor: pointer;
+    }
+}

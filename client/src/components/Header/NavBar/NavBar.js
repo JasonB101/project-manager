@@ -12,8 +12,9 @@ const NavBar = (props) => {
         <nav className={Styles.wrapper}>
             {token &&
                 <>
-                    <Link to="/opentickets">Open Tickets</Link>
+                    <Link to="/focus">Focus</Link>
                     <Link to="/sprints">Sprints</Link>
+                    <Link to="/opentickets">Open Tickets</Link>
                     <div className="spacer"></div>
                     <Link to="/admin">Admin</Link>
                 </>}

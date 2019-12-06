@@ -22,12 +22,12 @@ authRouter.post("/login", (req, res, next) => {
     User.findOne({ email: email }, (err, user) => {
         if (err) return res.status(500).send(err);
         if (!user) {
-            return res.status(401).send({ success: false, message: "The email address and password combination, is incorrect." });
+            return res.status(401).send({ success: false, message: "Incorrect Login Credentials" });
         }
         user.checkPassword(password, (err, isMatch) => {
             if (err) return res.status(500).send(err);
             if (!isMatch) {
-                return res.status(401).send({success: false, message: "The email address and password combination, is incorrect." })
+                return res.status(401).send({success: false, message: "Incorrect Login Credentials" })
             }
 
             res.send(user.loginUserInfo())
