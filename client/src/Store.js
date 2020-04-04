@@ -12,11 +12,11 @@ const Store = (props) => {
     const [showNewTicket, toggleNewTicket] = useState(false);
     const [showNewSprint, toggleNewSprint] = useState(false);
     const [openTickets, setOpenTickets] = useState([]);
-    const [user, setUser] = useState({
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) ? {
         //there are no name and token in localStorage, JSON.parse user then access value
         name: JSON.parse(localStorage.getItem('user')).fullName || "",
         token: JSON.parse(localStorage.getItem('user')).token || ""
-    })
+    } : {})
 
     useEffect(() => {
         if (user.token) {
