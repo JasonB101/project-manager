@@ -45,7 +45,7 @@ ticketRouter.delete("/:id", async (req, res, next) => {
     if (admin) {
         try {
             let id = req.params.id;
-            await Ticket.findByIdAndRemove(id);
+            await Ticket.findByIdAndDelete(id);
             return res.status(200).send({ success: true });
         } catch (err) {
             console.log(err);
