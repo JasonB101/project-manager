@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Styles from "./ToolBar.module.scss";
 import OpenTicketsTB from "./OpenTicketsTB/OpenTicketsTB"
 import SprintsTB from "./SprintsTB/SprintsTB"
@@ -19,10 +19,10 @@ const ToolBar = (props) => {
     return (
         <div className={Styles.wrapper}>
             {token &&
-                <Switch>
-                    <Route path="/opentickets" component={ (props) => <OpenTicketsTB {...openTicketsTBProps} {...props} />} />
-                    <Route path="/sprints" component={ (props) => <SprintsTB {...sprintsTBProps} {...props} />} />
-                </Switch>}
+                <Routes>
+                    <Route path="/opentickets" element={<OpenTicketsTB {...openTicketsTBProps} />} />
+                    <Route path="/sprints" element={<SprintsTB {...sprintsTBProps} />} />
+                </Routes>}
 
         </div>
     );

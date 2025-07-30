@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Switch, Route, Redirect } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import Styles from "./View.module.scss";
 import OpenTickets from "./OpenTickets/OpenTickets";
 import Sprints from "./Sprints/Sprints"
@@ -15,13 +15,13 @@ const View = (props) => {
 
     return (
         <section className={Styles.wrapper}>
-            <Switch>
-                <Route path="/login" component={Login} />
-                <Route exact path="/" component={() => <Redirect to="/login" />} />
-                <ProtectedRoute path="/opentickets" component={() => <OpenTickets tickets={openTickets} />} />
-                <ProtectedRoute path="/sprints" component={() => <Sprints sprints={openTickets} />} />
-                <ProtectedRoute path="/admin" component={() => <OpenTickets tickets={openTickets} />} />
-            </Switch>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Navigate to="/login" replace />} />
+                <Route path="/opentickets" element={<ProtectedRoute><OpenTickets tickets={openTickets} /></ProtectedRoute>} />
+                <Route path="/sprints" element={<ProtectedRoute><Sprints sprints={openTickets} /></ProtectedRoute>} />
+                <Route path="/admin" element={<ProtectedRoute><OpenTickets tickets={openTickets} /></ProtectedRoute>} />
+            </Routes>
 
         </section>
     );

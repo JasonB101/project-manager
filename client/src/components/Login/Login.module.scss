@@ -1,6 +1,45 @@
 .wrapper {
     display: flex;
     justify-content: center;
-    height: 100%;
     align-items: center;
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    
+    // Floating elements animation
+    &::before {
+        content: '';
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(24, 138, 214, 0.1), transparent);
+        border-radius: 50%;
+        animation: float-slow 15s ease-in-out infinite;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 20%;
+        right: 15%;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent);
+        border-radius: 50%;
+        animation: float-slow 12s ease-in-out infinite reverse;
+    }
+}
+
+@keyframes float-slow {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+        opacity: 0.6;
+    }
 }

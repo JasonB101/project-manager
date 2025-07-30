@@ -16,4 +16,4 @@ const sprintSchema = new Schema({
 
 
 
-module.exports = mongoose.model("Sprint", ticketSchema);
+module.exports = mongoose.model("Sprint", sprintSchema);

@@ -12,19 +12,30 @@
 html {
     display: flex;
     justify-content: center;
-    
 }
 
 #root {
     max-height: 100vh;
     height: 100vh;
-    padding: 10px 0;
+    padding: 20px;
     
+    &:has(.authWrapper) {
+        padding: 0;
+        max-height: none;
+        height: auto;
+        min-height: 100vh;
+    }
 }
 
 body {
-    background-color: #188ad6;
-    background-image: url("./images/45-degree-fabric-dark.png");
+    background: linear-gradient(135deg, #0a1a2e 0%, #16213e 25%, #1a2a42 50%, #1e3a56 75%, #188ad6 100%);
+    min-height: 100vh;
+    
+    &:has(.authWrapper) {
+        background: none;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 button {

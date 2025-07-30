@@ -35,21 +35,60 @@ const InsertTicket = (props) => {
     return (
         <div className={Styles.outterDiv}>
             <div className={Styles.wrapper}>
-                <h2>New Ticket</h2>
-                <br></br>
-                <h3>Project <input onChange={inputChange} type="text" name="projectName"
-                    value={formInputs.projectName} autoFocus /></h3>
-                <h3>Task <input onChange={inputChange} type="text" name="task" value={formInputs.task} /></h3>
-                <h4>Description</h4>
-                <textarea onChange={inputChange} rows="6" name="description" value={formInputs.description} />
-                <span>Severity Level</span>
-                <select onChange={inputChange} name="severity" defaultValue="Medium">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                </select>
+                <h2>Create New Ticket</h2>
+                
+                <div className={Styles.inputGroup}>
+                    <label htmlFor="projectName">Project Name</label>
+                    <input 
+                        id="projectName"
+                        onChange={inputChange} 
+                        type="text" 
+                        name="projectName"
+                        value={formInputs.projectName} 
+                        placeholder="Enter project name"
+                        autoFocus 
+                    />
+                </div>
+
+                <div className={Styles.inputGroup}>
+                    <label htmlFor="task">Task</label>
+                    <input 
+                        id="task"
+                        onChange={inputChange} 
+                        type="text" 
+                        name="task" 
+                        value={formInputs.task}
+                        placeholder="Enter task title"
+                    />
+                </div>
+
+                <div className={Styles.inputGroup}>
+                    <label htmlFor="description">Description</label>
+                    <textarea 
+                        id="description"
+                        onChange={inputChange} 
+                        name="description" 
+                        value={formInputs.description}
+                        placeholder="Describe the task in detail..."
+                    />
+                </div>
+
+                <div className={Styles.inputGroup}>
+                    <label htmlFor="severity">Severity Level</label>
+                    <select 
+                        id="severity"
+                        onChange={inputChange} 
+                        name="severity" 
+                        defaultValue="Medium"
+                    >
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
                 <div className={Styles.buttonWrapper}>
-                    <button onClick={submitTicket} >Submit</button>
+                    <button onClick={submitTicket}>Create Ticket</button>
                     <button onClick={(e) => toggleNewTicket(false)}>Cancel</button>
                 </div>
             </div>

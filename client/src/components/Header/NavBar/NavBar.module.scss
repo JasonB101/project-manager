@@ -1,29 +1,31 @@
 .wrapper {
     display: flex;
     align-items: center;
-    height: 40px;
-    background-color: rgb(43, 42, 42);
-    &:hover {
-        a {
-            color: #0696f7;
-        }
-    }
+    height: 50px;
+    background: linear-gradient(90deg, rgba(0, 107, 179, 0.1), rgba(0, 107, 179, 0.05));
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 20px;
     
     a {
         display: flex;
-        transition: all 0.2s ease-in;
+        align-items: center;
         justify-content: center;
-        white-space: nowrap;
-        width: 80px;
-        margin: 0 0 0 30px;
-        color: #0483d8;
-        font-weight: 100;
+        padding: 8px 20px;
+        margin: 0 8px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
         text-decoration: none;
-        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
 
         &:hover {
-            font-size: 18px;
-            
+            color: #ffffff;
+            background: rgba(0, 107, 179, 0.2);
+            border-color: rgba(0, 107, 179, 0.4);
         }
     }
 }

@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import Styles from "./LoginBox.module.scss";
 import { login } from "../../../ControllerFunctions/authFunctions"
 import {storeData} from "../../../Store"
-import { withRouter } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-const LoginBox = (props) => {
+const LoginBox = () => {
+    const navigate = useNavigate();
     const storeContext = useContext(storeData);
     const setUserInfo = storeContext.setUser;
     const [formInputs, changeInputs] = useState({
@@ -32,7 +33,7 @@ const LoginBox = (props) => {
         
         if (loginData.success) {
             setUserInfo(loginData.data)
-            props.history.push("/opentickets")
+            navigate("/opentickets")
         }
         if (!loginData.success) {
             if (loginData.data){
@@ -45,17 +46,50 @@ const LoginBox = (props) => {
 
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            submit();
+        }
+    }
+
     return (
         <div className={Styles.wrapper}>
-            <div>
-                <h3>email <input onChange={inputChange} type="text" name="email"
-                    value={formInputs.email} autoFocus /></h3>
-                <h3>password <input onChange={inputChange} type="password" name="password" value={formInputs.password} /></h3>
+            <h2 className={Styles.title}>Welcome Back</h2>
+            
+            <div className={Styles.inputGroup}>
+                <label htmlFor="email">User</label>
+                <input 
+                    id="email"
+                    onChange={inputChange} 
+                    onKeyDown={handleKeyDown} 
+                    type="text" 
+                    name="email"
+                    value={formInputs.email} 
+                    placeholder="Enter your username"
+                    autoFocus 
+                />
             </div>
-            <p>{errorMessage}</p>
-            <button onClick={submit} >Login</button>
+
+            <div className={Styles.inputGroup}>
+                <label htmlFor="password">Password</label>
+                <input 
+                    id="password"
+                    onChange={inputChange} 
+                    onKeyDown={handleKeyDown} 
+                    type="password" 
+                    name="password" 
+                    value={formInputs.password}
+                    placeholder="Enter your password"
+                />
+            </div>
+
+            <div className={Styles.errorMessage}>{errorMessage}</div>
+            
+            <button className={Styles.loginButton} onClick={submit}>
+                Login
+            </button>
         </div>
     );
 }
 
-export default withRouter(LoginBox);
+export default LoginBox;

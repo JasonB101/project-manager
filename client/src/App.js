@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import Styles from "./App.module.scss"
 import Header from "./components/Header/Header";
 import View from "./components/View/View";
@@ -10,16 +11,26 @@ import { storeData } from "./Store"
 const App = (props) => {
     const storeDataContext = useContext(storeData);
     const { showNewTicket } = storeDataContext.toggleNewTicket;
+    const location = useLocation();
+    
+    // Hide header and toolbar on auth routes
+    const isAuthRoute = location.pathname === '/login' || location.pathname === '/';
 
-    //need to set up routes, and if there is not a token, then keep redirecting to auth/login
-        return (
-            <div className={Styles.wrapper}>
+    return (
+        <div className={isAuthRoute ? Styles.authWrapper : Styles.wrapper}>
+            {isAuthRoute ? (
+                <div className={Styles.authHeader}>
+                    <h1 className={Styles.authTitle}>Project Manager</h1>
+                    <p className={Styles.authSubtitle}>Streamline your workflow</p>
+                </div>
+            ) : (
                 <Header />
-                <View />
-                <ToolBar />
-                {showNewTicket && <InsertTicket />}
-            </div>
-        );
+            )}
+            <View />
+            {!isAuthRoute && <ToolBar />}
+            {showNewTicket && <InsertTicket />}
+        </div>
+    );
    
 }
 

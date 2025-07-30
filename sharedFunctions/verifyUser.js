@@ -2,24 +2,24 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 async function verifyUser(tokenWithBearer) {
-   
-    const token = tokenWithBearer.replace("Bearer ", "");
-    const userObect = jwt.verify(token, process.env.SECRET);
-    const foundUser = [false, false];
-    const user = await User.findOne({ email: userObect.email }, (err, user) => {
+    try {
+        const token = tokenWithBearer.replace("Bearer ", "");
+        const userObject = jwt.verify(token, process.env.SECRET);
+        
+        const user = await User.findOne({ email: userObject.email });
+        
         if (user) {
-            foundUser[0] = true
-            if (user.isAdmin) {
-                foundUser[1] = true;
-            } else {
-                foundUser[1] = false
-            }
+            const isAdmin = user.isAdmin || false;
+            console.log(`User verified: ${user.email}, Admin: ${isAdmin}`);
+            return [true, isAdmin];
+        } else {
+            console.log("User not found in database");
+            return [false, false];
         }
-    })
-
-    console.log(foundUser)
-    return foundUser
-
+    } catch (error) {
+        console.log("Token verification failed:", error.message);
+        return [false, false];
+    }
 }
 
 module.exports = verifyUser;

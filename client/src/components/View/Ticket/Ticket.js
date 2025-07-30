@@ -54,13 +54,13 @@ const Ticket = (props) => {
     const severityColor = (severityLevel) => {
         switch (severityLevel) {
             case "High":
-                return "rgb(247, 176, 176)";
+                return { backgroundColor: "rgba(239, 68, 68, 0.2)", color: "#fecaca", border: "1px solid rgba(239, 68, 68, 0.4)" };
             case "Medium":
-                return "rgb(248, 220, 194)";
+                return { backgroundColor: "rgba(245, 158, 11, 0.2)", color: "#fed7aa", border: "1px solid rgba(245, 158, 11, 0.4)" };
             case "Low":
-                return "beige";
+                return { backgroundColor: "rgba(34, 197, 94, 0.2)", color: "#bbf7d0", border: "1px solid rgba(34, 197, 94, 0.4)" };
             default:
-                return "none";
+                return { backgroundColor: "rgba(107, 114, 128, 0.2)", color: "#d1d5db", border: "1px solid rgba(107, 114, 128, 0.4)" };
         }
     }
 
@@ -79,7 +79,7 @@ const Ticket = (props) => {
             <br></br>
             <section>
                 <h4>{task}</h4>
-                <p style={{ backgroundColor: severityColor(severity) }}>Severity Level {severity}</p>
+                <p style={severityColor(severity)}>Severity Level {severity}</p>
             </section>
 
                 <section className={Styles.hiddenBlock} ref={element => hiddenBlock = element}>

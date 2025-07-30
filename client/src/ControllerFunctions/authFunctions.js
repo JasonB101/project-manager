@@ -12,12 +12,15 @@ export function verifyUser(token) {
 }
 
 export async function login(userInfo) {
-    let error;
-    const user = await axios.post("/api/auth/login", userInfo)
-        .catch(err => error = err.response.data.message);
-    if (error) return { success: false, data: error }
-    if (user) {
-        localStorage.setItem("user", JSON.stringify(user.data.user));
-        return { success: true, data: user.data.user };
+    try {
+        const response = await axios.post("/api/auth/login", userInfo);
+        if (response.data.user) {
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            return { success: true, data: response.data.user };
+        }
+        return { success: false, data: "Login failed" };
+    } catch (err) {
+        const errorMessage = err.response?.data?.message || "Login failed";
+        return { success: false, data: errorMessage };
     }
 }

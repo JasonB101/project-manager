@@ -2,7 +2,13 @@
     height: 100%;
     display: grid;
     grid-template-areas: 
-    "sc sc tl";
+    "sc tl";
     grid-template-rows: 1fr;
-    grid-template-columns: repeat(2, 120px) 1fr;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
 }
